@@ -8,8 +8,9 @@ const int COLUNAS = 40;
 const double VALOR[3] = {50.0, 30.0, 15.0};
 
 void exibirMapa(char mapa[LINHAS][COLUNAS]) {
-    cout << "Mapa de ocupação do teatro:\n";
+    cout << "Mapa de ocupaÃ§Ã£o do teatro:\n";
     for (int i = 0; i < LINHAS; i++) {
+	//setw(): Usado para definir espaÃ§o entre os valores, ajudando no alinhamento.
         cout << setw(2) << (i + 1) << " "; 
         for (int j = 0; j < COLUNAS; j++) {
             cout << mapa[i][j] << " ";
@@ -42,7 +43,7 @@ void calcularFaturamento(char mapa[LINHAS][COLUNAS]) {
     cout << "Qtde de lugares ocupados: " << lugaresOcupados << endl;
     cout << "Valor da bilheteira: R$ " << fixed << setprecision(2) << faturamento << endl;
 
-    cout << "\nOcupação por fileira:\n";
+    cout << "\nOcupaÃ§Ã£o por fileira:\n";
     for (int i = 0; i < LINHAS; i++) {
         cout << "Fileira " << setw(2) << (i + 1) << ": " << ocupadosPorFileira[i] << " lugares ocupados\n";
     }
@@ -64,9 +65,9 @@ int main() {
         cout << "\nMENU:\n";
         cout << "0. Finalizar\n";
         cout << "1. Reservar poltrona\n";
-        cout << "2. Mapa de ocupação\n";
+        cout << "2. Mapa de ocupaÃ§Ã£o\n";
         cout << "3. Faturamento\n";
-        cout << "Escolha uma opção: ";
+        cout << "Escolha uma opÃ§Ã£o: ";
         cin >> opcao;
 
         switch (opcao) {
@@ -78,13 +79,13 @@ int main() {
                 cin >> poltrona;
 
                 if (fileira < 1 || fileira > 15 || poltrona < 1 || poltrona > 40) {
-                    cout << "Erro: Fileira ou poltrona inválida!\n";
+                    cout << "Erro: Fileira ou poltrona invÃ¡lida!\n";
                     break;
                 }
 
-                // Verifica se a poltrona já está ocupada
+                // Verifica se a poltrona jÃ¡ estÃ¡ ocupada
                 if (mapa[fileira - 1][poltrona - 1] == '#') {
-                    cout << "Essa poltrona já está ocupada!\n";
+                    cout << "Essa poltrona jÃ¡ estÃ¡ ocupada!\n";
                 } else {
                     mapa[fileira - 1][poltrona - 1] = '#';
                     cout << "Reserva realizada com sucesso!\n";
@@ -105,7 +106,7 @@ int main() {
                 break;
 
             default:
-                cout << "Opção inválida! Tente novamente.\n";
+                cout << "OpÃ§Ã£o invÃ¡lida! Tente novamente.\n";
                 break;
         }
     } while (opcao != 0);
