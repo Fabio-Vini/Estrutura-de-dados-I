@@ -13,7 +13,7 @@ struct Funcionario {
 
 vector<Funcionario> funcionarios;
 
-//verificar se um prontu·rio j· existe
+//verificar se um prontu√°rio j√° existe
 bool prontuarioExiste(const string& prontuario) {
     for (auto& f : funcionarios) {
         if (f.prontuario == prontuario)
@@ -25,55 +25,55 @@ bool prontuarioExiste(const string& prontuario) {
 // Incluir
 void incluirFuncionario() {
     Funcionario f;
-    cout << "Digite o prontu·rio (ex: Cb3029118): ";
+    cout << "Digite o prontu√°rio (ex: Cb3029118): ";
     cin >> f.prontuario;
 
     if (prontuarioExiste(f.prontuario)) {
-        cout << "Erro: Prontu·rio j· cadastrado!\n";
+        cout << "Erro: Prontu√°rio j√° cadastrado!\n";
         return;
     }
 
-    cin.ignore(); // Limpar buffer
+    cin.ignore();
     cout << "Digite o nome: ";
     getline(cin, f.nome);
 
-    cout << "Digite o sal·rio: ";
+    cout << "Digite o sal√°rio: ";
     cin >> f.salario;
 
     funcionarios.push_back(f);
-    cout << "Funcion·rio incluÌdo com sucesso!\n";
+    cout << "Funcion√°rio inclu√≠do com sucesso!\n";
 }
 
 // Excluir
 void excluirFuncionario() {
     string prontuario;
-    cout << "Digite o prontu·rio para excluir: ";
+    cout << "Digite o prontu√°rio para excluir: ";
     cin >> prontuario;
 
     for (auto it = funcionarios.begin(); it != funcionarios.end(); ++it) {
         if (it->prontuario == prontuario) {
             funcionarios.erase(it);
-            cout << "Funcion·rio excluÌdo com sucesso!\n";
+            cout << "Funcion√°rio exclu√≠do com sucesso!\n";
             return;
         }
     }
-    cout << "Funcion·rio n„o encontrado!\n";
+    cout << "Funcion√°rio n√£o encontrado!\n";
 }
 
 // Pesquisar
 void pesquisarFuncionario() {
     string prontuario;
-    cout << "Digite o prontu·rio para pesquisar: ";
+    cout << "Digite o prontu√°rio para pesquisar: ";
     cin >> prontuario;
 
     for (auto& f : funcionarios) {
         if (f.prontuario == prontuario) {
             cout << "Nome: " << f.nome << "\n";
-            cout << "Sal·rio: R$ " << fixed << setprecision(2) << f.salario << "\n";
+            cout << "Sal√°rio: R$ " << fixed << setprecision(2) << f.salario << "\n";
             return;
         }
     }
-    cout << "Funcion·rio n„o encontrado!\n";
+    cout << "Funcion√°rio n√£o encontrado!\n";
 }
 
 // Listar
@@ -81,18 +81,18 @@ void listarFuncionarios() {
     double totalSalarios = 0.0;
 
     if (funcionarios.empty()) {
-        cout << "Nenhum funcion·rio cadastrado.\n";
+        cout << "Nenhum funcion√°rio cadastrado.\n";
         return;
     }
 
-    cout << "\n--- Lista de Funcion·rios ---\n";
+    cout << "\n--- Lista de Funcion√°rios ---\n";
     for (auto& f : funcionarios) {
-        cout << "Prontu·rio: " << f.prontuario << "\n";
+        cout << "Prontu√°rio: " << f.prontuario << "\n";
         cout << "Nome: " << f.nome << "\n";
-        cout << "Sal·rio: R$ " << fixed << setprecision(2) << f.salario << "\n\n";
+        cout << "Sal√°rio: R$ " << fixed << setprecision(2) << f.salario << "\n\n";
         totalSalarios += f.salario;
     }
-    cout << "Total dos sal·rios: R$ " << fixed << setprecision(2) << totalSalarios << "\n";
+    cout << "Total dos sal√°rios: R$ " << fixed << setprecision(2) << totalSalarios << "\n";
 }
 
 int main() {
@@ -105,7 +105,7 @@ int main() {
         cout << "2. Excluir\n";
         cout << "3. Pesquisar\n";
         cout << "4. Listar\n";
-        cout << "Escolha uma opÁ„o: ";
+        cout << "Escolha uma op√ß√£o: ";
         cin >> opcao;
 
         switch (opcao) {
@@ -125,7 +125,7 @@ int main() {
                 listarFuncionarios();
                 break;
             default:
-                cout << "OpÁ„o inv·lida. Tente novamente.\n";
+                cout << "Op√ß√£o inv√°lida. Tente novamente.\n";
         }
 
     } while (opcao != 0);
