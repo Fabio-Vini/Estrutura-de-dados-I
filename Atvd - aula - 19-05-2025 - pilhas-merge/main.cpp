@@ -62,8 +62,6 @@ void mostrarPilhaVetor(PilhaVetor& p, string tipo) {
     cout << endl;
 }
 
-//FUNÇÃO PRINCIPAL
-
 int main() {
     No* pilhaParLista = nullptr;
     No* pilhaImparLista = nullptr;
@@ -75,7 +73,7 @@ int main() {
 
     for (int i = 0; i < 30; i++) {
         do {
-            cout << "Digite o " << i + 1 << "º número (maior que " << anterior << "): ";
+            cout << "Digite o " << i + 1 << "Âº nÃºmero (maior que " << anterior << "): ";
             cin >> numero;
         } while (numero <= anterior);
         anterior = numero;
@@ -90,10 +88,10 @@ int main() {
     }
 
     mostrarPilhaLista(pilhaParLista, "Pares");
-    mostrarPilhaLista(pilhaImparLista, "Ímpares");
+    mostrarPilhaLista(pilhaImparLista, "Ãmpares");
 
     mostrarPilhaVetor(pilhaParVetor, "Pares");
-    mostrarPilhaVetor(pilhaImparVetor, "Ímpares");
+    mostrarPilhaVetor(pilhaImparVetor, "Ãmpares");
 
     return 0;
 }
