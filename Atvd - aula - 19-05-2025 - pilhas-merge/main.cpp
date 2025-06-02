@@ -69,7 +69,7 @@ int main() {
     PilhaVetor pilhaParVetor;
     PilhaVetor pilhaImparVetor;
 
-    int numero, anterior = -2147483648;
+    int numero, anterior = -9999;
 
     for (int i = 0; i < 30; i++) {
         do {
