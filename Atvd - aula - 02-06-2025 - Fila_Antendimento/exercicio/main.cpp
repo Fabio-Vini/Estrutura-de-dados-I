@@ -1,50 +1,62 @@
 #include <iostream>
 using namespace std;
 
-const int MAX = 100;
+struct No {
+    int senha;
+    No* proximo;
+};
 
 struct Fila {
-    int vetor[MAX];
-    int* inicio;
-    int* fim;
+    No* inicio;
+    No* fim;
     int tamanho;
 
     Fila() {
-        inicio = vetor;
-        fim = vetor;
+        inicio = nullptr;
+        fim = nullptr;
         tamanho = 0;
     }
 
     void enfileirar(int valor) {
-        if (tamanho == MAX) {
-            cout << "Fila cheia!" << endl;
-            return;
+        No* novo = new No;
+        novo->senha = valor;
+        novo->proximo = nullptr;
+
+        if (fim != nullptr) {
+            fim->proximo = novo;
+        } else {
+            inicio = novo;
         }
-        *fim = valor;
-        fim++;
+
+        fim = novo;
         tamanho++;
     }
 
     int desenfileirar() {
-        if (tamanho == 0) {
+        if (inicio == nullptr) {
             cout << "Fila vazia!" << endl;
             return -1;
         }
-        int valor = *inicio;
-        for (int i = 0; i < tamanho - 1; i++) {
-            vetor[i] = vetor[i + 1];
+
+        No* temp = inicio;
+        int valor = temp->senha;
+        inicio = inicio->proximo;
+
+        if (inicio == nullptr) {
+            fim = nullptr;
         }
-        fim--;
+
+        delete temp;
         tamanho--;
         return valor;
     }
 
-    int getTamanho() {
-        return tamanho;
-    }
-
     bool estaVazia() {
         return tamanho == 0;
+    }
+
+    int getTamanho() {
+        return tamanho;
     }
 };
 
@@ -59,41 +71,4 @@ int main() {
         cout << "0 - Sair\n";
         cout << "1 - Gerar senha\n";
         cout << "2 - Realizar atendimento\n";
-        cout << "Senhas aguardando atendimento: " << senhasGeradas.getTamanho() << endl;
-        cout << "Escolha uma opcao: ";
-        cin >> seletor;
-
-        switch (seletor) {
-            case 0:
-                if (!senhasGeradas.estaVazia()) {
-                    cout << "Ainda há senhas aguardando atendimento. Continue até atender todas." << endl;
-                } else {
-                    cout << "\nEncerrando sistema...\n";
-                    cout << "Total de senhas atendidas: " << senhasAtendidas.getTamanho() << endl;
-                }
-                break;
-
-            case 1:
-                senhasGeradas.enfileirar(numeroSenha);
-                cout << "Senha gerada: " << numeroSenha << endl;
-                numeroSenha++;
-                break;
-
-            case 2:
-                if (senhasGeradas.estaVazia()) {
-                    cout << "Nenhuma senha para atender!" << endl;
-                } else {
-                    int senha = senhasGeradas.desenfileirar();
-                    senhasAtendidas.enfileirar(senha);
-                    cout << "Atendendo senha: " << senha << endl;
-                }
-                break;
-
-            default:
-                cout << "Opcao invalida. Tente novamente." << endl;
-        }
-
-    } while (!(seletor == 0 && senhasGeradas.estaVazia()));
-
-    return 0;
-}
+        cout << "Senhas aguardando atendimento: " << senhasGeradas.getTam
